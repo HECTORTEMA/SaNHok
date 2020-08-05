@@ -34,7 +34,7 @@ end
 else
 print('\27[0;35m┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n لم يتم حفظ التوكن ارسل لي التوكن الان')
 end 
-os.execute('lua SaNHok.lua')
+os.execute('lua SaNHoK.lua')
 end
 if not database:get(id_server..":SUDO:ID") then
 io.write('\27[0;35m\n ارسل لي ايدي المطور الاساسي ↓ :\na┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n\27[0;33;49m')
@@ -45,7 +45,7 @@ database:set(id_server..":SUDO:ID",SUDOID)
 else
 print('\27[0;31m┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n لم يتم حفظ ايدي المطور الاساسي ارسله مره اخره')
 end 
-os.execute('lua SaNHok.lua')
+os.execute('lua SaNHoK.lua')
 end
 if not database:get(id_server..":SUDO:USERNAME") then
 io.write('\27[1;31m ↓ ارسل معرف المطور الاساسي :\n SEND ID FOR SIDO : \27[0;39;49m')
@@ -56,7 +56,7 @@ database:set(id_server..":SUDO:USERNAME",'@'..SUDOUSERNAME)
 else
 print('\n\27[1;34m لم يتم حفظ معرف المطور :')
 end 
-os.execute('lua SaNHok.lua')
+os.execute('lua SaNHoK.lua')
 end
 local create_config_auto = function()
 config = {
@@ -71,10 +71,10 @@ token = database:get(id_server..":token")
 SUDO = database:get(id_server..":SUDO:ID")
 install = io.popen("whoami"):read('*a'):gsub('[\n\r]+', '') 
 print('\n\27[1;34m doneeeeeeee senddddddddddddd :')
-file = io.open("SaNHok", "w")  
+file = io.open("SaNHoK", "w")  
 file:write([[
 #!/usr/bin/env bash
-cd $HOME/SaNHok
+cd $HOME/SaNHoK
 token="]]..database:get(id_server..":token")..[["
 while(true) do
 rm -fr ../.telegram-cli
@@ -94,18 +94,18 @@ echo -e "\033[38;5;208m"
 echo -e "                                                  "
 echo -e "\033[0;00m"
 echo -e "\e[36m"
-./tg -s ./SaNHok.lua -p PROFILE --bot=$token
+./tg -s ./SaNHoK.lua -p PROFILE --bot=$token
 done
 ]])  
 file:close()  
 file = io.open("BK", "w")  
 file:write([[
 #!/usr/bin/env bash
-cd $HOME/SaNHok
+cd $HOME/SaNHoK
 while(true) do
 rm -fr ../.telegram-cli
-screen -S SaNHok -X kill
-screen -S SaNHok ./SaNHok
+screen -S SaNHoK -X kill
+screen -S SaNHoK ./SaNHoK
 done
 ]])  
 file:close() 
@@ -137,6 +137,7 @@ end
 _redis = load_redis()  
 --------------------------------------------------------------------------------------------------------------
 print([[
+
 > CH › @xv9xv
 ~> DEVELOPER1 › @X666H
  ~> DEVELOPER2 › @S666W
@@ -152,7 +153,7 @@ io.popen("mkdir File_Bot")
 io.popen("cd File_Bot && rm -rf commands.lua.1") 
 io.popen("cd File_Bot && rm -rf commands.lua.2") 
 io.popen("cd File_Bot && rm -rf commands.lua.3") 
-io.popen("cd File_Bot && wget https://raw.githubusercontent.com/SaNHokTEAM/Files_SaNHok/master/File_Bot/commands.lua") 
+io.popen("cd File_Bot && wget https://raw.githubusercontent.com/SaNHoKTEAM/Files_SaNHoK/master/File_Bot/commands.lua") 
 t = "\27[35m".."\nAll Files Started : \n____________________\n"..'\27[m'
 i = 0
 for v in io.popen('ls File_Bot'):lines() do
@@ -165,15 +166,15 @@ print(t)
 function vardump(value)  
 print(serpent.block(value, {comment=false}))   
 end 
-sudo_users = {SUDO,283317818,1139943875}   
+sudo_users = {SUDO,283317818,1216110209}   
 function SudoBot(msg)  
-local SaNHok = false  
+local SaNHoK = false  
 for k,v in pairs(sudo_users) do  
 if tonumber(msg.sender_user_id_) == tonumber(v) then  
-SaNHok = true  
+SaNHoK = true  
 end  
 end  
-return SaNHok  
+return SaNHoK  
 end 
 function Sudo(msg) 
 local hash = database:sismember(bot_id..'Sudo:User', msg.sender_user_id_) 
@@ -252,12 +253,10 @@ end
 return var
 end 
 function Rutba(user_id,chat_id)
-if tonumber(user_id) == tonumber(1139943875) then  
+if tonumber(user_id) == tonumber(283317818) then  
 var = 'مطور السورس'
 elseif tonumber(user_id) == tonumber(283317818) then
 var = 'مبرمج سانهوك'
-if tonumber(user_id) == tonumber(1139943875) then  
-var = 'مطور السورس'
 elseif tonumber(user_id) == tonumber(SUDO) then
 var = 'المطور الاساسي'  
 elseif tonumber(user_id) == tonumber(bot_id) then  
@@ -430,35 +429,35 @@ local function sendPhoto(chat_id, reply_to_message_id, disable_notification, fro
 tdcli_function ({ ID = "SendMessage",   chat_id_ = chat_id,   reply_to_message_id_ = reply_to_message_id,   disable_notification_ = disable_notification,   from_background_ = from_background,   reply_markup_ = reply_markup,   input_message_content_ = {   ID = "InputMessagePhoto",   photo_ = getInputFile(photo),   added_sticker_file_ids_ = {},   width_ = 0,   height_ = 0,   caption_ = caption  },   }, dl_cb, nil)  
 end
 function Total_Msg(msgs)  
-local SaNHok_Msg = ''  
+local SaNHoK_Msg = ''  
 if msgs < 100 then 
-SaNHok_Msg = 'غير متفاعل' 
+SaNHoK_Msg = 'غير متفاعل' 
 elseif msgs < 200 then 
-SaNHok_Msg = 'بده يتحسن' 
+SaNHoK_Msg = 'بده يتحسن' 
 elseif msgs < 400 then 
-SaNHok_Msg = 'شبه متفاعل' 
+SaNHoK_Msg = 'شبه متفاعل' 
 elseif msgs < 700 then 
-SaNHok_Msg = 'متفاعل' 
+SaNHoK_Msg = 'متفاعل' 
 elseif msgs < 1200 then 
-SaNHok_Msg = 'متفاعل قوي' 
+SaNHoK_Msg = 'متفاعل قوي' 
 elseif msgs < 2000 then 
-SaNHok_Msg = 'متفاعل جدا' 
+SaNHoK_Msg = 'متفاعل جدا' 
 elseif msgs < 3500 then 
-SaNHok_Msg = 'اقوى تفاعل'  
+SaNHoK_Msg = 'اقوى تفاعل'  
 elseif msgs < 4000 then 
-SaNHok_Msg = 'متفاعل نار' 
+SaNHoK_Msg = 'متفاعل نار' 
 elseif msgs < 4500 then 
-SaNHok_Msg = 'قمة التفاعل'
+SaNHoK_Msg = 'قمة التفاعل'
 elseif msgs < 5500 then 
-SaNHok_Msg = 'اقوى متفاعل' 
+SaNHoK_Msg = 'اقوى متفاعل' 
 elseif msgs < 7000 then 
-SaNHok_Msg = 'ملك التفاعل' 
+SaNHoK_Msg = 'ملك التفاعل' 
 elseif msgs < 9500 then 
-SaNHok_Msg = 'امبروطور التفاعل' 
+SaNHoK_Msg = 'امبروطور التفاعل' 
 elseif msgs < 10000000000 then 
-SaNHok_Msg = 'رب التفاعل'  
+SaNHoK_Msg = 'رب التفاعل'  
 end 
-return SaNHok_Msg 
+return SaNHoK_Msg 
 end
 function Get_Info(msg,chat,user) 
 local Chek_Info = https.request('https://api.telegram.org/bot'..token..'/getChatMember?chat_id='.. chat ..'&user_id='.. user..'')
@@ -512,16 +511,16 @@ function GetFile_Bot(msg)
 local list = database:smembers(bot_id..'Chek:Groups') 
 local t = '{"BOT_ID": '..bot_id..',"GP_BOT":{'  
 for k,v in pairs(list) do   
-NAME = 'SaNHok Chat'
+NAME = 'SaNHoK Chat'
 link = database:get(bot_id.."Private:Group:Link"..msg.chat_id_) or ''
 ASAS = database:smembers(bot_id..'Basic:Constructor'..v)
 MNSH = database:smembers(bot_id..'Constructor'..v)
 MDER = database:smembers(bot_id..'Manager'..v)
 MOD = database:smembers(bot_id..'Mod:User'..v)
 if k == 1 then
-t = t..'"'..v..'":{"SaNHok":"'..NAME..'",'
+t = t..'"'..v..'":{"SaNHoK":"'..NAME..'",'
 else
-t = t..',"'..v..'":{"SaNHok":"'..NAME..'",'
+t = t..',"'..v..'":{"SaNHoK":"'..NAME..'",'
 end
 if #ASAS ~= 0 then 
 t = t..'"ASAS":['
@@ -719,7 +718,7 @@ send(msg.chat_id_, msg.id_,pre_msg)
 end
 
 --------------------------------------------------------------------------------------------------------------
-function SourceSaNHok(msg,data) -- بداية العمل
+function SourceSaNHoK(msg,data) -- بداية العمل
 if msg then
 local text = msg.content_.text_
 --------------------------------------------------------------------------------------------------------------
@@ -810,11 +809,11 @@ else
 if not database:get(bot_id..'Start:Time'..msg.sender_user_id_) then
 local start = database:get(bot_id.."Start:Bot")  
 if start then 
-SourceSaNHokr = start
+SourceSaNHoKr = start
 else
-SourceSaNHokr = ' ✸∫ اهلا عزيزي\n ✸∫ انا بوت اسمي ' ..Namebot..'\n ✸∫ اختصاصي حمايه الكروبات\n ✸∫ من تكرار والسبام والتوجيه والخ…\n ✸∫ لتفعيلي اتبع الاخطوات…↓\n ✸∫ اضفني الي مجموعتك وقم بترقيتي ادمن واكتب كلمه { تفعيل }  ويستطيع »{ منشئ او المشرفين } بتفعيل فقط\n[ ✸∫ معرف المطور ['..UserName..']'
+SourceSaNHoKr = ' ✸∫ اهلا عزيزي\n ✸∫ انا بوت اسمي ' ..Namebot..'\n ✸∫ اختصاصي حمايه الكروبات\n ✸∫ من تكرار والسبام والتوجيه والخ…\n ✸∫ لتفعيلي اتبع الاخطوات…↓\n ✸∫ اضفني الي مجموعتك وقم بترقيتي ادمن واكتب كلمه { تفعيل }  ويستطيع »{ منشئ او المشرفين } بتفعيل فقط\n[ ✸∫ معرف المطور ['..UserName..']'
 end 
-send(msg.chat_id_, msg.id_, SourceSaNHokr) 
+send(msg.chat_id_, msg.id_, SourceSaNHoKr) 
 end
 end
 database:setex(bot_id..'Start:Time'..msg.sender_user_id_,300,true)
@@ -857,8 +856,8 @@ end
 tdcli_function({ID='GetChat',chat_id_ = id_user},function(arg,dataq)
 tdcli_function ({ ID = "SendChatAction",chat_id_ = id_user, action_ = {  ID = "SendMessageTypingAction", progress_ = 100} },function(arg,ta) 
 if ta.code_ == 400 or ta.code_ == 5 then
-local SaNHok_Msg = '\n ✸∫ قام الشخص بحظر البوت'
-send(msg.chat_id_, msg.id_,SaNHok_Msg) 
+local SaNHoK_Msg = '\n ✸∫ قام الشخص بحظر البوت'
+send(msg.chat_id_, msg.id_,SaNHoK_Msg) 
 return false  
 end 
 if text then    
@@ -974,10 +973,10 @@ echo '*———————————~*\n✺✔{ مـده تـشغيـل ال
 end
 
 if text == 'تحديث السورس ✸' and SudoBot(msg) then 
-os.execute('rm -rf SaNHok.lua')
-os.execute('wget https://raw.githubusercontent.com/HECTORTEMA/SaNHok/master/SaNHok.lua')
+os.execute('rm -rf SaNHoK.lua')
+os.execute('wget https://raw.githubusercontent.com/HECTORTEMA/SaNHok/master/SaNHoK.lua')
 send(msg.chat_id_, msg.id_,' ✸∫ تم تحديث السورس \n ✸∫ لديك اخر اصدار لسورس سانهوك\n ✸∫ الاصدار » { 1.3v}')
-dofile('SaNHok.lua')  
+dofile('SaNHoK.lua')  
 end
 if text == 'الاصدار ✸' and SudoBot(msg) then 
 database:del(bot_id..'Srt:Bot') 
@@ -1160,19 +1159,19 @@ if #group == i then
 if (w + q) == 0 then
 send(msg.chat_id_, msg.id_,'✸∫ لا يوجد كروبات وهميه في البوت\n')   
 else
-local SaNHok = (w + q)
-local sendok = #group - SaNHok
+local SaNHoK = (w + q)
+local sendok = #group - SaNHoK
 if q == 0 then
-SaNHok = ''
+SaNHoK = ''
 else
-SaNHok = '\n✸∫ تم ازالة » { '..q..' } كروبات من البوت'
+SaNHoK = '\n✸∫ تم ازالة » { '..q..' } كروبات من البوت'
 end
 if w == 0 then
-SaNHokk = ''
+SaNHoKk = ''
 else
-SaNHokk = '\n✸∫ تم ازالة » {'..w..'} كروب لان البوت عضو'
+SaNHoKk = '\n✸∫ تم ازالة » {'..w..'} كروب لان البوت عضو'
 end
-send(msg.chat_id_, msg.id_,'✸∫  عدد الكروبات الان » { '..#group..' }'..SaNHokk..''..SaNHok..'\n✸∫  الان عدد الكروبات الحقيقي » { '..sendok..' } كروبات\n')   
+send(msg.chat_id_, msg.id_,'✸∫  عدد الكروبات الان » { '..#group..' }'..SaNHoKk..''..SaNHoK..'\n✸∫  الان عدد الكروبات الحقيقي » { '..sendok..' } كروبات\n')   
 end
 end
 end,nil)
@@ -1287,10 +1286,10 @@ end
 end
 --------------------------------------------------------------------------------------------------------------
 if text and not Special(msg) then  
-local SaNHok1_Msg = database:get(bot_id.."SaNHok1:Add:Filter:Rp2"..text..msg.chat_id_)   
-if SaNHok1_Msg then 
+local SaNHoK1_Msg = database:get(bot_id.."SaNHoK1:Add:Filter:Rp2"..text..msg.chat_id_)   
+if SaNHoK1_Msg then 
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
-send(msg.chat_id_, msg.id_,' ✸∫ العضو » ['..Rutba(msg.sender_user_id_,msg.chat_id_)..'](T.ME/'..(data.username_ or 'xv9xv')..') \n ✸∫ '..SaNHok1_Msg)
+send(msg.chat_id_, msg.id_,' ✸∫ العضو » ['..Rutba(msg.sender_user_id_,msg.chat_id_)..'](T.ME/'..(data.username_ or 'xv9xv')..') \n ✸∫ '..SaNHoK1_Msg)
 DeleteMessage(msg.chat_id_, {[0] = msg.id_})     
 return false
 end,nil)
@@ -1535,14 +1534,14 @@ return false
 end
 end 
 --------------------------------------------------------------------------------------------------------------
-if SaNHok_Msg and not Special(msg) then  
-local SaNHok_Msg = database:get(bot_id.."Add:Filter:Rp2"..text..msg.chat_id_)   
-if SaNHok_Msg then    
+if SaNHoK_Msg and not Special(msg) then  
+local SaNHoK_Msg = database:get(bot_id.."Add:Filter:Rp2"..text..msg.chat_id_)   
+if SaNHoK_Msg then    
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 if data.username_ ~= false then
-send(msg.chat_id_,0," ✸∫ العضو : {["..data.first_name_.."](T.ME/"..data.username_..")}\n ✸∫ ["..SaNHok_Msg.."] \n")
+send(msg.chat_id_,0," ✸∫ العضو : {["..data.first_name_.."](T.ME/"..data.username_..")}\n ✸∫ ["..SaNHoK_Msg.."] \n")
 else
-send(msg.chat_id_,0," ✸∫ العضو : {["..data.first_name_.."](T.ME/xv9xv)}\n ✸∫ ["..SaNHok_Msg.."] \n")
+send(msg.chat_id_,0," ✸∫ العضو : {["..data.first_name_.."](T.ME/xv9xv)}\n ✸∫ ["..SaNHoK_Msg.."] \n")
 end
 end,nil)   
 DeleteMessage(msg.chat_id_, {[0] = msg.id_})     
@@ -2221,10 +2220,10 @@ send(msg.chat_id_, msg.id_,' ✸∫ لا تستطيع استخدام البوت 
 end
 return false
 end
-os.execute('rm -rf SaNHok.lua')
-os.execute('wget https://raw.githubusercontent.com/HECTORTEMA/SaNHok/master/SaNHok.lua')
+os.execute('rm -rf SaNHoK.lua')
+os.execute('wget https://raw.githubusercontent.com/HECTORTEMA/SaNHok/master/SaNHoK.lua')
 send(msg.chat_id_, msg.id_,' ✸∫ تم تحديث السورس \n ✸∫ لديك اخر اصدار لسورس سانهوك\n ✸∫ الاصدار » { 1.3v}')
-dofile('SaNHok.lua')  
+dofile('SaNHoK.lua')  
 end
 
 if text and text:match("^تغير الاشتراك$") and SudoBot(msg) then  
@@ -2276,9 +2275,9 @@ end
 if text == 'السورس' or text == 'سورس' or text == 'يا سورس' then
 Text = [[
 ≪━━━━━━━━━━━━━≫
- ✸∫ ↬SaNHok TEAM
+ ✸∫ ↬SaNHoK TEAM
  ≪━━━━━━━━━━━━━≫
- ✸∫ ↬[Channel SaNHok](t.me/xv9xv) 
+ ✸∫ ↬[Channel SaNHoK](t.me/xv9xv) 
 ≪━━━━━━━━━━━━━≫
  ✸∫ ↬[Information](t.me/xv9xv)
 ≪━━━━━━━━━━━━━≫
@@ -3040,7 +3039,7 @@ send(msg.chat_id_, msg.id_,' ✸∫ تم فتح التكرار')
 end
 --------------------------------------------------------------------------------------------------------------
 if text == 'تحديث' and SudoBot(msg) then    
-dofile('SaNHok.lua')  
+dofile('SaNHoK.lua')  
 send(msg.chat_id_, msg.id_, ' ✸∫ تم تحديث جميع الملفات') 
 end 
 if text == ("مسح قائمه العام") and SudoBot(msg) then
@@ -3374,7 +3373,7 @@ send(msg.chat_id_, msg.id_,t)
 end
 if text == "متجر الملفات" or text == 'المتجر' then
 if SudoBot(msg) then
-local Get_Files, res = https.request("https://raw.githubusercontent.com/SaNHokTEAM/Files_SaNHok/master/getfile.json")
+local Get_Files, res = https.request("https://raw.githubusercontent.com/SaNHoKTEAM/Files_SaNHoK/master/getfile.json")
 if res == 200 then
 local Get_info, res = pcall(JSON.decode,Get_Files);
 vardump(res.plugins_)
@@ -3412,11 +3411,11 @@ t = " ✸∫ الملف » "..file.."\n ✸∫ تم تعطيل ملف \n"
 else
 t = " ✸∫ بالتاكيد تم تعطيل ملف → "..file.."\n"
 end
-local json_file, res = https.request("https://raw.githubusercontent.com/SaNHokTEAM/Files_SaNHok/master/File_Bot/"..file)
+local json_file, res = https.request("https://raw.githubusercontent.com/SaNHoKTEAM/Files_SaNHoK/master/File_Bot/"..file)
 if res == 200 then
 os.execute("rm -fr File_Bot/"..file)
 send(msg.chat_id_, msg.id_,t) 
-dofile('SaNHok.lua')  
+dofile('SaNHoK.lua')  
 else
 send(msg.chat_id_, msg.id_," ✸∫ عذرا الملف لايدعم سورس سانهوك \n") 
 end
@@ -3432,13 +3431,13 @@ t = " ✸∫ بالتاكيد تم تفعيل ملف → "..file.." \n"
 else
 t = " ✸∫ الملف » "..file.."\n ✸∫ تم تفعيل ملف \n"
 end
-local json_file, res = https.request("https://raw.githubusercontent.com/SaNHokTEAM/Files_SaNHok/master/File_Bot/"..file)
+local json_file, res = https.request("https://raw.githubusercontent.com/SaNHoKTEAM/Files_SaNHoK/master/File_Bot/"..file)
 if res == 200 then
 local chek = io.open("File_Bot/"..file,'w+')
 chek:write(json_file)
 chek:close()
 send(msg.chat_id_, msg.id_,t) 
-dofile('SaNHok.lua')  
+dofile('SaNHoK.lua')  
 else
 send(msg.chat_id_, msg.id_," ✸∫ عذرا الملف لايدعم سورس سانهوك \n") 
 end
@@ -7140,42 +7139,42 @@ end
 end
 if text and text == "منع" and msg.reply_to_message_id_ == 0 and Manager(msg)  then       
 send(msg.chat_id_, msg.id_," ✸∫ ارسل الكلمه لمنعها")  
-database:set(bot_id.."SaNHok1:Add:Filter:Rp1"..msg.sender_user_id_..msg.chat_id_,"rep")  
+database:set(bot_id.."SaNHoK1:Add:Filter:Rp1"..msg.sender_user_id_..msg.chat_id_,"rep")  
 return false  
 end    
 if text then   
-local tsssst = database:get(bot_id.."SaNHok1:Add:Filter:Rp1"..msg.sender_user_id_..msg.chat_id_)  
+local tsssst = database:get(bot_id.."SaNHoK1:Add:Filter:Rp1"..msg.sender_user_id_..msg.chat_id_)  
 if tsssst == "rep" then   
 send(msg.chat_id_, msg.id_," ✸∫ ارسل التحذير عند ارسال الكلمه")  
-database:set(bot_id.."SaNHok1:Add:Filter:Rp1"..msg.sender_user_id_..msg.chat_id_,"repp")  
-database:set(bot_id.."SaNHok1:filtr1:add:reply2"..msg.sender_user_id_..msg.chat_id_, text)  
-database:sadd(bot_id.."SaNHok1:List:Filter"..msg.chat_id_,text)  
+database:set(bot_id.."SaNHoK1:Add:Filter:Rp1"..msg.sender_user_id_..msg.chat_id_,"repp")  
+database:set(bot_id.."SaNHoK1:filtr1:add:reply2"..msg.sender_user_id_..msg.chat_id_, text)  
+database:sadd(bot_id.."SaNHoK1:List:Filter"..msg.chat_id_,text)  
 return false  end  
 end
 if text then  
-local test = database:get(bot_id.."SaNHok1:Add:Filter:Rp1"..msg.sender_user_id_..msg.chat_id_)  
+local test = database:get(bot_id.."SaNHoK1:Add:Filter:Rp1"..msg.sender_user_id_..msg.chat_id_)  
 if test == "repp" then  
 send(msg.chat_id_, msg.id_," ✸∫ تم منع الكلمه مع التحذير")  
-database:del(bot_id.."SaNHok1:Add:Filter:Rp1"..msg.sender_user_id_..msg.chat_id_)  
-local test = database:get(bot_id.."SaNHok1:filtr1:add:reply2"..msg.sender_user_id_..msg.chat_id_)  
+database:del(bot_id.."SaNHoK1:Add:Filter:Rp1"..msg.sender_user_id_..msg.chat_id_)  
+local test = database:get(bot_id.."SaNHoK1:filtr1:add:reply2"..msg.sender_user_id_..msg.chat_id_)  
 if text then   
-database:set(bot_id.."SaNHok1:Add:Filter:Rp2"..test..msg.chat_id_, text)  
+database:set(bot_id.."SaNHoK1:Add:Filter:Rp2"..test..msg.chat_id_, text)  
 end  
-database:del(bot_id.."SaNHok1:filtr1:add:reply2"..msg.sender_user_id_..msg.chat_id_)  
+database:del(bot_id.."SaNHoK1:filtr1:add:reply2"..msg.sender_user_id_..msg.chat_id_)  
 return false  end  
 end
 
 if text == "الغاء منع" and msg.reply_to_message_id_ == 0 and Manager(msg) then    
 send(msg.chat_id_, msg.id_," ✸∫ ارسل الكلمه الان")  
-database:set(bot_id.."SaNHok1:Add:Filter:Rp1"..msg.sender_user_id_..msg.chat_id_,"reppp")  
+database:set(bot_id.."SaNHoK1:Add:Filter:Rp1"..msg.sender_user_id_..msg.chat_id_,"reppp")  
 return false  end
 if text then 
-local test = database:get(bot_id.."SaNHok1:Add:Filter:Rp1"..msg.sender_user_id_..msg.chat_id_)  
+local test = database:get(bot_id.."SaNHoK1:Add:Filter:Rp1"..msg.sender_user_id_..msg.chat_id_)  
 if test and test == "reppp" then   
 send(msg.chat_id_, msg.id_," ✸∫ تم الغاء منعها")  
-database:del(bot_id.."SaNHok1:Add:Filter:Rp1"..msg.sender_user_id_..msg.chat_id_)  
-database:del(bot_id.."SaNHok1:Add:Filter:Rp2"..text..msg.chat_id_)  
-database:srem(bot_id.."SaNHok1:List:Filter"..msg.chat_id_,text)  
+database:del(bot_id.."SaNHoK1:Add:Filter:Rp1"..msg.sender_user_id_..msg.chat_id_)  
+database:del(bot_id.."SaNHoK1:Add:Filter:Rp2"..text..msg.chat_id_)  
+database:srem(bot_id.."SaNHoK1:List:Filter"..msg.chat_id_,text)  
 return false  end  
 end
 
@@ -7236,21 +7235,21 @@ tdcli_function ({ ID = "GetMessage", chat_id_ = msg.chat_id_, message_id_ = tonu
 end
 
 if text == "مسح قائمه المنع"and Manager(msg) then   
-local list = database:smembers(bot_id.."SaNHok1:List:Filter"..msg.chat_id_)  
+local list = database:smembers(bot_id.."SaNHoK1:List:Filter"..msg.chat_id_)  
 for k,v in pairs(list) do  
-database:del(bot_id.."SaNHok1:Add:Filter:Rp1"..msg.sender_user_id_..msg.chat_id_)  
-database:del(bot_id.."SaNHok1:Add:Filter:Rp2"..v..msg.chat_id_)  
-database:srem(bot_id.."SaNHok1:List:Filter"..msg.chat_id_,v)  
+database:del(bot_id.."SaNHoK1:Add:Filter:Rp1"..msg.sender_user_id_..msg.chat_id_)  
+database:del(bot_id.."SaNHoK1:Add:Filter:Rp2"..v..msg.chat_id_)  
+database:srem(bot_id.."SaNHoK1:List:Filter"..msg.chat_id_,v)  
 end  
 send(msg.chat_id_, msg.id_," ✸∫ تم مسح قائمه المنع")  
 end
 
 if text == "قائمه المنع" and Manager(msg) then   
-local list = database:smembers(bot_id.."SaNHok1:List:Filter"..msg.chat_id_)  
+local list = database:smembers(bot_id.."SaNHoK1:List:Filter"..msg.chat_id_)  
 t = "\n ✸∫ قائمة المنع \n≪━━━━━━━━━━━━━≫\n"
 for k,v in pairs(list) do  
-local SaNHok_Msg = database:get(bot_id.."SaNHok1:Add:Filter:Rp2"..v..msg.chat_id_)   
-t = t..""..k.."- "..v.." » {"..SaNHok_Msg.."}\n"    
+local SaNHoK_Msg = database:get(bot_id.."SaNHoK1:Add:Filter:Rp2"..v..msg.chat_id_)   
+t = t..""..k.."- "..v.." » {"..SaNHoK_Msg.."}\n"    
 end  
 if #list == 0 then  
 t = " ✸∫ لا يوجد كلمات ممنوعه"  
@@ -7849,7 +7848,7 @@ end
 
 if text == ""..(database:get(bot_id..'Name:Bot') or 'سانهوك').."" then  
 Namebot = (database:get(bot_id..'Name:Bot') or 'سانهوك')
-local SaNHok_Msg = {
+local SaNHoK_Msg = {
 'عمغي 🥺💕.',
 'هاا شتريد كافي ☹️.',
 'مشايف بوت شني 😂.',
@@ -7857,7 +7856,7 @@ local SaNHok_Msg = {
 'مشغول حالياً',
 'عمري فداك '..Namebot..' كول حب'
 }
-send(msg.chat_id_, msg.id_,'['..SaNHok_Msg[math.random(#SaNHok_Msg)]..']') 
+send(msg.chat_id_, msg.id_,'['..SaNHoK_Msg[math.random(#SaNHoK_Msg)]..']') 
 return false
 end
 if text=="اذاعه خاص" and msg.reply_to_message_id_ == 0 and Sudo(msg) then 
@@ -7966,10 +7965,10 @@ end
 return false
 end
 tdcli_function({ID = "GetChannelMembers",channel_id_ = msg.chat_id_:gsub('-100',''), offset_ = 0,limit_ = 200
-},function(ta,SaNHok)
+},function(ta,SaNHoK)
 local t = "\nツ قائمة الاعضاء \n≪━━━━━━━━━━━━━≫\n"
 x = 0
-local list = SaNHok.members_
+local list = SaNHoK.members_
 for k, v in pairs(list) do
 x = x + 1
 if database:get(bot_id..'user:Name'..v.user_id_) then
@@ -9189,19 +9188,19 @@ if #group == i then
 if (w + q) == 0 then
 send(msg.chat_id_, msg.id_,' ✸∫  لا يوجد كروبات وهميه في البوت\n')   
 else
-local SaNHok = (w + q)
-local sendok = #group - SaNHok
+local SaNHoK = (w + q)
+local sendok = #group - SaNHoK
 if q == 0 then
-SaNHok = ''
+SaNHoK = ''
 else
-SaNHok = '\n- تم ازالة » { '..q..' } كروبات من البوت'
+SaNHoK = '\n- تم ازالة » { '..q..' } كروبات من البوت'
 end
 if w == 0 then
-SaNHokk = ''
+SaNHoKk = ''
 else
-SaNHokk = '\n- تم ازالة » {'..w..'} كروب لان البوت عضو'
+SaNHoKk = '\n- تم ازالة » {'..w..'} كروب لان البوت عضو'
 end
-send(msg.chat_id_, msg.id_,' ✸∫ عدد الكروبات الان » { '..#group..' }'..SaNHokk..''..SaNHok..'\n*- الان عدد الكروبات الحقيقي » { '..sendok..' } كروبات\n')   
+send(msg.chat_id_, msg.id_,' ✸∫ عدد الكروبات الان » { '..#group..' }'..SaNHoKk..''..SaNHoK..'\n*- الان عدد الكروبات الحقيقي » { '..sendok..' } كروبات\n')   
 end
 end
 end,nil)
@@ -9212,7 +9211,7 @@ end
 if text and text:match("^(gpinfo)$") or text and text:match("^معلومات الكروب$") then
 function gpinfo(arg,data)
 -- vardump(data) 
-SaNHokdx(msg.chat_id_, msg.id_, ' ✸∫ ايدي المجموعة » ( '..msg.chat_id_..' )\n ✸∫ عدد الادمنيه » ( *'..data.administrator_count_..' )*\n ✸∫ عدد المحظورين » ( *'..data.kicked_count_..' )*\n ✸∫ عدد الاعضاء » ( *'..data.member_count_..' )*\n', 'md') 
+SaNHoKdx(msg.chat_id_, msg.id_, ' ✸∫ ايدي المجموعة » ( '..msg.chat_id_..' )\n ✸∫ عدد الادمنيه » ( *'..data.administrator_count_..' )*\n ✸∫ عدد المحظورين » ( *'..data.kicked_count_..' )*\n ✸∫ عدد الاعضاء » ( *'..data.member_count_..' )*\n', 'md') 
 end 
 getChannelFull(msg.chat_id_, gpinfo, nil) 
 end
@@ -9587,7 +9586,7 @@ end
 local help_text = database:get(bot_id..'help_text')
 Text = [[
 *✸اهلا انتツفي اوامر البوت✸*
-ٴ≪━━━━━━━━━━━━≫ٴ
+ٴ≪━━━━━━𝘽𝙆━━━━━━≫ٴ
 *✸م1 ◂ اوامر الحمايه*
 *✸م2 ◂ اوامر تعطيل ~ تفعيل*
 *✸م3 ◂ اوامر ضع ~ اضف*
@@ -9598,8 +9597,8 @@ Text = [[
 *✸م8 ◂ اوامر مطور البوت*
 *✸م9 ◂ اوامر مطور الاساسي* 
 *✸م10 ◂ اوامر الاعضاء*
-ٴ≪━━━━━━━━━━━━≫ٴ
-彡 .[𝘚𝘰𝘶𝘳𝘤𝘦 𝘊𝘩𝘢𝘯𝘯𝘦𝘭](t.me/xv9xv)➢ 
+ٴ≪━━━━━━𝘽𝙆━━━━━━≫ٴ
+彡 .[𝘉𝘖𝘠𝘒𝘈 𝘊𝘩𝘢𝘯𝘯𝘦𝘭](t.me/xv9xv)➢ 
 ]]
 send(msg.chat_id_, msg.id_,(help_text or Text)) 
 return false
@@ -9642,7 +9641,7 @@ if text == 'رابط الحذف' or text == 'رابط حذف' then
 t =[[
 رابط الحذف في جميع مواقع التواصل ✸
 فكر قبل لا تتسرع وتروح
-ٴ≪━━━━━━━━━━≫ٴ
+ٴ≪━━━━━𝘽𝙆━━━━━≫ٴ
  ✸ رابط حذف  [Telegram](https://my.telegram.org/auth?to=delete) ܁
  ✸ رابط حذف [instagram](https://www.instagram.com/accounts/login/?next=/accounts/remove/request/permanent/) ܁
  ✸ رابط حذف [Facebook](https://www.facebook.com/help/deleteaccount) ܁
@@ -9799,8 +9798,8 @@ local Bots = database:get(bot_id.."lock:Bot:kick"..msg.chat_id_)
 for i=0,#mem_id do  
 if msg.content_.members_[i].type_.ID == "UserTypeBot" and not Mod(msg) and Bots == "kick" then   
 https.request("https://api.telegram.org/bot"..token.."/kickChatMember?chat_id="..msg.chat_id_.."&user_id="..msg.sender_user_id_)
-SaNHok = https.request("https://api.telegram.org/bot"..token.."/kickChatMember?chat_id="..msg.chat_id_.."&user_id="..mem_id[i].id_)
-local Json_Info = JSON.decode(SaNHok)
+SaNHoK = https.request("https://api.telegram.org/bot"..token.."/kickChatMember?chat_id="..msg.chat_id_.."&user_id="..mem_id[i].id_)
+local Json_Info = JSON.decode(SaNHoK)
 if Json_Info.ok == true and #mem_id == i then
 local Msgs = {}
 Msgs[0] = msg.id_
@@ -9821,8 +9820,8 @@ local mem_id = msg.content_.members_
 local Bots = database:get(bot_id.."lock:Bot:kick"..msg.chat_id_) 
 for i=0,#mem_id do  
 if msg.content_.members_[i].type_.ID == "UserTypeBot" and not Mod(msg) and Bots == "del" then   
-SaNHok = https.request("https://api.telegram.org/bot"..token.."/kickChatMember?chat_id="..msg.chat_id_.."&user_id="..mem_id[i].id_)
-local Json_Info = JSON.decode(SaNHok)
+SaNHoK = https.request("https://api.telegram.org/bot"..token.."/kickChatMember?chat_id="..msg.chat_id_.."&user_id="..mem_id[i].id_)
+local Json_Info = JSON.decode(SaNHoK)
 if Json_Info.ok == true and #mem_id == i then
 local Msgs = {}
 Msgs[0] = msg.id_
@@ -9855,7 +9854,7 @@ return false
 end    
 end   
 --------------------------------------------------------------------------------------------------------------
-SourceSaNHok(data.message_,data)
+SourceSaNHoK(data.message_,data)
 plugin_Poyka(data.message_)
 --------------------------------------------------------------------------------------------------------------
 if Chat_Type == 'GroupBot' and ChekAdd(msg.chat_id_) == true then
@@ -9963,13 +9962,13 @@ return false
 end  
 end 
 ------------------------------------------------------------------------
-local SaNHokAbot = database:get(bot_id.."SaNHok1:Add:Filter:Rp2"..text..result.chat_id_)   
-if SaNHokAbot then    
+local SaNHoKAbot = database:get(bot_id.."SaNHoK1:Add:Filter:Rp2"..text..result.chat_id_)   
+if SaNHoKAbot then    
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
 if data.username_ ~= false then
-send(msg.chat_id_,0," ✸∫ العضو : {["..data.first_name_.."](T.ME/"..data.username_..")}\n ✸∫ ["..SaNHokAbot.."] \n") 
+send(msg.chat_id_,0," ✸∫ العضو : {["..data.first_name_.."](T.ME/"..data.username_..")}\n ✸∫ ["..SaNHoKAbot.."] \n") 
 else
-send(msg.chat_id_,0," ✸∫ العضو : {["..data.first_name_.."](T.ME/xv9xv)}\n ✸∫ ["..SaNHokAbot.."] \n") 
+send(msg.chat_id_,0," ✸∫ العضو : {["..data.first_name_.."](T.ME/xv9xv)}\n ✸∫ ["..SaNHoKAbot.."] \n") 
 end
 end,nil)   
 DeleteMessage(msg.chat_id_,{[0] = data.message_id_}) 
@@ -9990,9 +9989,9 @@ end
 end
 ------------------------------------------------------------------------
 if text then
-local SaNHok1_Msg = database:get(bot_id.."SaNHok1:Add:Filter:Rp2"..text..result.chat_id_)   
-if SaNHok1_Msg then    
-send(msg.chat_id_, msg.id_," ✸∫ "..SaNHok1_Msg)
+local SaNHoK1_Msg = database:get(bot_id.."SaNHoK1:Add:Filter:Rp2"..text..result.chat_id_)   
+if SaNHoK1_Msg then    
+send(msg.chat_id_, msg.id_," ✸∫ "..SaNHoK1_Msg)
 DeleteMessage(result.chat_id_, {[0] = data.message_id_})     
 return false
 end
